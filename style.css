@@ -351,29 +351,31 @@ Theme Name: Digital Marketing
     margin-top: 10px;
     font-size: 20px;
 }
-/* pagination */
-
-
-
-
+/* Pagination Styles */
 .pagination {
     display: flex;
-    justify-content: space-between;
-    margin-top: 20px;
+    justify-content: center;
+    gap: 10px;
+    margin: 20px 0;
 }
 
-.pagination .prev a, 
-.pagination .next a {
-    background: #0073e6;
-    color: white;
+.pagination a, .pagination span {
     padding: 10px 15px;
-    text-decoration: none;
+    border: 1px solid #0073e6;
     border-radius: 5px;
+    text-decoration: none;
+    /* color: #0073e6; */
+    transition: background-color 0.3s;
 }
 
-.pagination .prev a:hover, 
-.pagination .next a:hover {
-    background: #005bb5;
+.pagination .current {
+    background-color: #0073e6;
+    color: #da2424;
+}
+
+.pagination a:hover {
+    background-color: #ff4500;
+    color: #fff;
 }
 
 /* archive page */

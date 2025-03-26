@@ -39,14 +39,10 @@
         <?php endif; ?>
     </div>
 
-    <div class="pagination">
-        <?php
-        echo paginate_links(array(
-            'prev_text' => __('« Prev'),
-            'next_text' => __('Next »'),
-        ));
-        ?>
-    </div>
+   <!-- Pagination -->
+<div class="pagination">
+            <?php the_posts_pagination(); ?>
+        </div>
 </div>
 
 <?php get_footer(); ?>

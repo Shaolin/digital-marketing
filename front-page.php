@@ -40,15 +40,10 @@
 <!-- pagination -->
 
 
+<!-- Pagination -->
 <div class="pagination">
-    <?php if (get_previous_posts_link()) : ?>
-        <div class="prev"><?php previous_posts_link('« Newer Posts'); ?></div>
-    <?php endif; ?>
-
-    <?php if (get_next_posts_link()) : ?>
-        <div class="next"><?php next_posts_link('Older Posts »'); ?></div>
-    <?php endif; ?>
-</div>
+            <?php the_posts_pagination(); ?>
+        </div>
 
 
 <?php get_footer(); ?>

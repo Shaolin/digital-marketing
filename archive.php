@@ -1,48 +1,57 @@
 <?php get_header(); ?>
 
-<!-- Archive Title at the Top -->
-<div class="archive-header">
-    <h1>
-        <?php 
-        if (is_category()) {
-            single_cat_title();
-        } elseif (is_tag()) {
-            single_tag_title();
-        } elseif (is_author()) {
-            the_post();
-            echo 'Author: ' . get_the_author();
-            rewind_posts();
-        } elseif (is_day()) {
-            echo 'Daily Archives: ' . get_the_date();
-        } elseif (is_month()) {
-            echo 'Monthly Archives: ' . get_the_date('F Y');
-        } elseif (is_year()) {
-            echo 'Yearly Archives: ' . get_the_date('Y');
-        } else {
-            echo 'Archives';
-        }
-        ?>
-    </h1>
-</div>
-
+<h1 class="archive-title"><?php the_archive_title(); ?></h1>
 <div class="container">
-    <div class="archive-posts">
-        <?php if (have_posts()) : while (have_posts()) : the_post(); ?>
-            <article class="post">
-                <h2><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
-                <?php the_post_thumbnail('medium'); ?>
-                <p><?php the_excerpt(); ?></p>
-                <a href="<?php the_permalink(); ?>" class="read-more">Read More</a>
-            </article>
-        <?php endwhile; else : ?>
-            <p>No posts found.</p>
-        <?php endif; ?>
+    
+
+    <div class="post-grid">
+        <?php
+        // Define the number of posts per page
+        $paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
+
+        $args = array(
+            'post_type'      => 'post',
+            'posts_per_page' => 6, // Show 6 posts per page
+            'paged'          => $paged,
+        );
+
+        $query = new WP_Query($args);
+
+        if ($query->have_posts()) :
+            while ($query->have_posts()) : $query->the_post();
+        ?>
+                <div class="post-item">
+                    <a href="<?php the_permalink(); ?>">
+                        <?php if (has_post_thumbnail()) : ?>
+                            <div class="post-thumbnail">
+                                <?php the_post_thumbnail('medium'); ?>
+                            </div>
+                        <?php endif; ?>
+                        <h2><?php the_title(); ?></h2>
+                        <p><?php the_excerpt(); ?></p>
+                    </a>
+                </div>
+        <?php
+            endwhile;
+            wp_reset_postdata();
+        else :
+            echo '<p>No posts found.</p>';
+        endif;
+        ?>
     </div>
 
-   <!-- Pagination -->
-<div class="pagination">
-            <?php the_posts_pagination(); ?>
-        </div>
+    
 </div>
+<!-- Pagination -->
+<div class="pagination">
+        <?php
+        echo paginate_links(array(
+            'total'        => $query->max_num_pages,
+            'current'      => max(1, get_query_var('paged')),
+            'prev_text'    => '&laquo; Prev',
+            'next_text'    => 'Next &raquo;',
+        ));
+        ?>
+    </div>
 
 <?php get_footer(); ?>

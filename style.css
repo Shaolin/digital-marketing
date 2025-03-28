@@ -150,62 +150,54 @@ Theme Name: Digital Marketing
 
 
 
-.single-container {
-    display: flex;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 20px;
-    gap: 30px;
-}
+/* front-page */
 
-/* Main content area */
-.content-area {
-    flex: 2;
-    background: #fff;
-    padding: 20px;
-    border-radius: 8px;
-}
-/* single post */
-.single-post-container {
-    max-width: 800px;
+.container {
+    max-width: 1200px;
     margin: auto;
     padding: 20px;
+    /* display: flex;
+    flex-direction: column; */
 }
 
-.post-title {
-    font-size: 28px;
-    font-weight: bold;
+.post-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 posts per row */
+    gap: 20px;
+}
+
+.post-item {
+    background: #f9f9f9;
+    padding: 15px;
+    border-radius: 5px;
+    transition: 0.3s;
+    text-align: center;
+}
+
+.post-item:hover {
+    background: #e0e0e0;
 }
 
 .post-thumbnail img {
     width: 100%;
     height: auto;
-    border-radius: 8px;
+    border-radius: 5px;
 }
 
-.post-content {
-    font-size: 18px;
-    line-height: 1.6;
-}
-
-.post-navigation {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 20px;
-}
-
-.post-comments {
-    margin-top: 40px;
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .post-grid {
+        grid-template-columns: repeat(2, 1fr); /* 2 columns on tablets */
+    }
 }
 
 @media (max-width: 768px) {
-    .single-post-container {
-        padding: 10px;
-    }
-    .post-title {
-        font-size: 24px;
+    .post-grid {
+        grid-template-columns: repeat(1, 1fr); /* 1 column on mobile */
     }
 }
+
+
 
 
 /* Sidebar */
@@ -298,148 +290,76 @@ Theme Name: Digital Marketing
     color: #333;
 }
 
-/* front page */
-/* General Homepage Styling */
-.homepage-container {
+
+
+/* archive page */
+.container {
     max-width: 1200px;
-    margin: 0 auto;
+    margin: auto;
     padding: 20px;
 }
 
-/* Hero Section */
-.hero-section {
-    text-align: center;
-    padding: 50px 20px;
-    background: #0073e6;
-    color: white;
-    border-radius: 8px;
-}
-
-.hero-section h1 {
-    font-size: 36px;
-    margin-bottom: 10px;
-}
-
-.hero-section p {
-    font-size: 20px;
-}
-
-/* Latest Posts Grid */
-.latest-posts {
-    margin-top: 40px;
-}
-
-.posts-grid {
+.post-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(3, 1fr); /* 3 posts per row */
     gap: 20px;
 }
 
 .post-item {
     background: #f9f9f9;
     padding: 15px;
-    border-radius: 8px;
-    text-align: center;
-}
-
-.post-item img {
-    max-width: 100%;
-    border-radius: 8px;
-}
-
-.post-item h3 {
-    margin-top: 10px;
-    font-size: 20px;
-}
-/* Pagination Styles */
-.pagination {
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-    margin: 20px 0;
-}
-
-.pagination a, .pagination span {
-    padding: 10px 15px;
-    border: 1px solid #0073e6;
     border-radius: 5px;
-    text-decoration: none;
-    /* color: #0073e6; */
-    transition: background-color 0.3s;
-}
-
-.pagination .current {
-    background-color: #0073e6;
-    color: #da2424;
-}
-
-.pagination a:hover {
-    background-color: #ff4500;
-    color: #fff;
-}
-
-/* archive page */
-.container {
-    width: 80%;
-    margin: 0 auto;
-}
-
-h1 {
+    transition: 0.3s;
     text-align: center;
-    margin-bottom: 20px;
-    
 }
 
-.archive-posts {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-   
-    gap: 20px;
+.post-item:hover {
+    background: #e0e0e0;
 }
 
-.post {
-    background: #f9f9f9;
-    padding: 15px;
-    border-radius: 8px;
-}
-
-.post img {
-    max-width: 100%;
+.post-thumbnail img {
+    width: 100%;
+    height: auto;
     border-radius: 5px;
 }
-
-.read-more {
-    display: inline-block;
-    margin-top: 10px;
-    color: #0073e6;
-    text-decoration: none;
+.archive-title{
+    text-align: center;
 }
 
+/* Pagination Styling */
 .pagination {
     text-align: center;
-    margin-top: 20px;
+    margin-top: 30px;
+    width: 100%;
 }
 
 .pagination a {
     display: inline-block;
     padding: 8px 12px;
-    margin: 5px;
-    background: #0073e6;
-    color: white;
+    margin: 0 5px;
+    background: #333;
+    color: #fff;
     text-decoration: none;
     border-radius: 5px;
 }
-.archive-header {
-    text-align: center;
-    padding: 20px 0;
-    background: #f4f4f4;
-    margin-bottom: 20px;
+
+.pagination a:hover {
+    background: #ff6600;
 }
 
-.archive-header h1 {
-    font-size: 2rem;
-    color: #333;
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .post-grid {
+        grid-template-columns: repeat(2, 1fr); /* 2 columns on tablets */
+    }
 }
+
+@media (max-width: 768px) {
+    .post-grid {
+        grid-template-columns: repeat(1, 1fr); /* 1 column on mobile */
+    }
+}
+
 
 /* search icon */
 
@@ -553,25 +473,27 @@ h1 {
 .read-more:hover {
     background: #005a87;
 }
+/* pagination */
 
-/* Pagination */
-.search-pagination {
+.pagination {
     text-align: center;
-    margin-top: 30px;
+    margin-top: 20px;
 }
 
-.search-pagination a {
+.pagination a {
+    display: inline-block;
     padding: 8px 12px;
-    margin: 5px;
+    margin: 0 5px;
+    background: #333;
+    color: #fff;
     text-decoration: none;
-    background: #0073aa;
-    color: white;
     border-radius: 5px;
 }
 
-.search-pagination a:hover {
-    background: #005a87;
+.pagination a:hover {
+    background: #ff6600;
 }
+
 
 /* No results message */
 .no-results {
@@ -662,5 +584,42 @@ h1 {
 
 .social-links a:hover {
     color: #ffcc00;
+}
+
+/* single post  */
+
+.single-container {
+    display: flex;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    gap: 30px;
+}
+
+/* Main content area */
+.content-area {
+    flex: 2;
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+/* Sidebar */
+.sidebar {
+    flex: 1;
+    background: #f9f9f9;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+    .single-container {
+        flex-direction: column;
+    }
+
+    .sidebar {
+        order: 2;  /* Sidebar appears after the content on small screens */
+    }
 }
 
